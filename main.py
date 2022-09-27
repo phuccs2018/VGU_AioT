@@ -22,6 +22,7 @@ def disconnected(client):
 
 def message(client , feed_id , payload):
     print("Received Message: " + payload)
+    print("Received data from feed_id: " + feed_id)
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
 client.on_connect = connected
