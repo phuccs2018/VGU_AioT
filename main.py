@@ -2,11 +2,12 @@ print("Hello AIoT")
 import sys
 import time
 import serial.tools.list_ports
+from simple_ai import *
 from Adafruit_IO import MQTTClient
 
 AIO_FEED_IDS = ["actuator1", "actuator2", "sensor1", "sensor2", "sensor3", "visiondetector"]
 AIO_USERNAME = "khoikieu1608"
-AIO_KEY = "aio_HcIW546XzVYqwO3nClDqXA18neLW"
+AIO_KEY = "aio_ekPX74OCjJMxAhDRrEAFLijildw"
 
 def connected(client):
     print("Connect Successfully ...")
@@ -32,16 +33,6 @@ client.on_subscribe = subscribe
 client.connect()
 client.loop_background()
 
-def getPort():
-    return getPort == "/dev/ttyACM0"
-    print("Testing port:", getPort())
-
-isMicrobitConnected = False
-if getPort() != "None":
-    ser = serial.Serial(port=getPort(), baudrate=115200)
-    isMicrobitConnected = True
-    print("MCU is connected!!!")
-
 mess = ""
 def processData(data):
     data = data.replace("!", "")
@@ -62,22 +53,11 @@ def processData(data):
     except:
         pass
 
-def readSerial():
-    bytesToRead = ser.inWaiting()
-    if (bytesToRead > 0):
-        global mess
-        mess = mess + ser.read(bytesToRead).decode("UTF-8")
-        while ("#" in mess) and ("!" in mess):
-            start = mess.find("!")
-            end = mess.find("#")
-            processData(mess[start:end + 1])
-            if (end == len(mess)):
-                mess = ""
-            else:
-                mess = mess[end+1:]
+
 
 while True:
-    if isMicrobitConnected:
-        readSerial()
-    time.sleep(10)
+    time.sleep(5)
+    image_capture()
+    ai_result = image_detector()
+    client.publish("visiondetector", ai_result)
     pass

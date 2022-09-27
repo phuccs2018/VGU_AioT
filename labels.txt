@@ -1,0 +1,3 @@
+0 Unmask
+1 Masked
+2 No Face Detection
