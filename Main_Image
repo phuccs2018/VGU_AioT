@@ -1,0 +1,47 @@
+import sys
+import time
+from Adafruit_IO import MQTTClient
+from Ai_file import *
+import time
+
+
+AIO_FEED_IDS = ["actuator1", "actuator2", "sensor1", "sensor2", "sensor3","visionDetection"]
+AIO_USERNAME = "chosang2000vn"
+AIO_KEY = 'aio_HPFX43Y9EHQC63WHKj3ZSQRp4nfv'
+
+def connected(client):
+    print("Connect Successfully ...")
+    for feed in AIO_FEED_IDS:
+        client.subscribe(feed)
+
+def subscribe(client , userdata , mid , granted_qos):
+    print("Subscribed  ...")
+
+def disconnected(client):
+    print("Disconnected ...")
+    sys.exit (1)
+
+def message(client , feed_id , payload):
+    print("Received Message: " + payload)
+    print("Received data from feed_id: " + feed_id)
+
+client = MQTTClient(AIO_USERNAME , AIO_KEY)
+client.on_connect = connected
+client.on_disconnect = disconnected
+client.on_message = message
+client.on_subscribe = subscribe
+client.connect()
+client.loop_background()
+while True:
+    # Final Quest: public image into web/adafruit
+    time.sleep(5)
+    image_capture()
+    image_detector()
+    ai_result = image_detector()
+    client.publish("visionDetection", ai_result)
+    pass
+
+
+
+
+
