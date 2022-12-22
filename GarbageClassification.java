@@ -16,7 +16,7 @@ public class GarbageClassification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garbage_classification);
-//       back.findViewById(R.id.backGarbageClassification);
+//       back = findViewById(R.id.backGarbageClassification);
 //       back.setOnClickListener(new View.OnClickListener()
 //       {
 //           @Override
