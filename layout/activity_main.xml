@@ -4,119 +4,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Main"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#ff0000">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:orientation="horizontal">
+        android:background="#0000ff">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="#00ff00"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2">
-                <TextView
-                    android:id="@+id/txtTemperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="23"
-                    android:textSize="60dp"
-                    android:textColor="#ff0000"
-                    android:textStyle="bold"
-                    android:gravity="center"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="°C"
-                    android:textSize="40dp"
-                    android:textColor="#ff0000"
-                    android:textStyle="bold"
-                    android:gravity="center"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Temperature"
-                    android:gravity="center"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5">
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="#00ff00">
+            android:layout_weight="1">
             <TextView
-                android:id="@+id/txtHumidity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="80%"
-                android:textSize="50dp"
-                android:textColor="#0000ff"
+                android:text="Dashboard"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="30dp"
                 android:gravity="center"/>
         </LinearLayout>
 
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
-        android:background="#0000ff">
+        android:layout_weight="9"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"/>
-        <ToggleButton
-            android:id="@+id/btnPUMP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ToggleButton
-            android:id="@+id/btnLED"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/calendarMain"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/schedule"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:text ="Calendar"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/FAQMain"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/faq"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:text ="FAQ"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"/>
+
+            </LinearLayout>
 
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00ff00"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/resultMain"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/results"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:text ="Result"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"/>
 
-    </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/turnOffMain"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/off"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:text ="Turn off"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#ff0000">
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
