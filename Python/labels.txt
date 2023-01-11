@@ -1,0 +1,3 @@
+0 Organic Trash
+1 Inorganic Trash
+2 Nothing 
