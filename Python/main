@@ -1,0 +1,48 @@
+import sys
+import time
+from Adafruit_IO import MQTTClient
+from ai_file import *
+import time
+
+#Create the account in Adafruit.io with 3 feed named: "organix,inorganz,nothing_trash
+AIO_FEED_IDS = ["organix","inorganz","nothing_trash"]
+AIO_USERNAME = "input your user_name"
+AIO_KEY = "input your private key "
+
+def connected(client):
+    print("Connect Successfully ...")
+    for feed in AIO_FEED_IDS:
+        client.subscribe(feed)
+
+def subscribe(client , userdata , mid , granted_qos):
+    print("Subscribed  ...")
+
+def disconnected(client):
+    print("Disconnected ...")
+    sys.exit (1)
+
+def message(client , feed_id , payload):
+    print("Received Message: " + payload)
+    print("Received data from feed_id: " + feed_id)
+
+client = MQTTClient(AIO_USERNAME , AIO_KEY)
+client.on_connect = connected
+client.on_disconnect = disconnected
+client.on_message = message
+client.on_subscribe = subscribe
+client.connect()
+client.loop_background()
+while True:
+    # Final Quest: public image into web/adafruit
+    time.sleep(5)
+    image_capture()
+    image_detector()
+
+    ai_result = image_detector()
+    client.publish("organix", f"{round(ai_result[1][0] * 100, 2)} %" )
+    client.publish("inorganz", f"{round(ai_result[1][1] * 100, 2)} %" )
+    client.publish("nothing_trash", f"{round(ai_result[1][2] * 100, 2)} %")
+
+    pass
+
+
